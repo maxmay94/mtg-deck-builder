@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import * as deckReviewsCtrl from '../controllers/deckReviews.js'
-import { isLoggedIn } from '../middleware/middleware'
+import { isLoggedIn } from '../middleware/middleware.js'
 
 const router = Router()
 
