@@ -8,8 +8,7 @@ const deckSchema = new Schema({
     required: true
   },
   deckList: {
-    type: [Number],
-    required: true
+    type: [Number]
   },
   author: {type: Schema.Types.ObjectId, ref: 'Profile'},
   reviews: [{ type:Schema.Types.ObjectId, ref: "DeckReview" }]
