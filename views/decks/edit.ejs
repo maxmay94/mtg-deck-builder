@@ -3,21 +3,31 @@
 
 <section>
   <h1><%= title %> </h1>
-  <form action="/decks/new" method="GET">
+  <form action="/decks/edit" method="GET">
     <label>Search: <br>
       <input type="text" name="searchCard">
       <button type="submit">Search</button>
     </label>
   </form> 
-  <div>
 
+  <h2>Search results: </h2>
+  <div class="search-box">
   <% cardObjs.forEach(card => { %>
     <% if(card.imageUrl) { %>
-        <img src="<%= card.imageUrl %>" alt="card image" style="height:250px">
+      <form action="" style="display:inline;">
+        <button>
+          <img src="<%= card.imageUrl %>" alt="<%= card.name %> " style="height:250px">
+        </button>
+      </form>
     <% } %>
   <% }) %>
+  </div>
+
+  <h2>Current Deck: </h2>
+  <div>
 
   </div>
 </section>
+
 
 <%- include('../partials/footer') %>
