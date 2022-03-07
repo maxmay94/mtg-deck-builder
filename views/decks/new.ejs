@@ -1,6 +1,23 @@
-<%- include('./partials/html-head') %>
-<%- include('./partials/nav') %>
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
 
+<section>
+  <h1><%= title %> </h1>
+  <form action="/decks/new" method="GET">
+    <label>Search: <br>
+      <input type="text" name="search">
+      <button type="submit">Search</button>
+      
+    </label>
+  </form> 
+  
+  <img src="<%= pic %>" alt="card image">
 
+    <!-- <div>
+      <section>
+        <img src="<%#= pic %> " alt="">
+      </section>
+    </div> -->
+</section>
 
-<%- include('./partials/footer') %>
+<%- include('../partials/footer') %>

@@ -1,6 +1,23 @@
-<%- include('./partials/html-head') %>
-<%- include('./partials/nav') %>
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
 
+<section>
+  <h1>My <%= title %> </h1>
 
+  <% if(decks.deckList) { %>
+    <ul>
+      <% decks.forEach(deck => { %>
+        <li><%= deck.name %> </li>
+      <% }) %>
+   </ul>
+  <% } else { %>
+    <h2>You don't have any decks yet dummy!</h2>
+  <% } %>
 
-<%- include('./partials/footer') %>
+  <form action="/decks/new" method="GET">
+    <button type="submit">Make a Deck</button>
+  </form>
+
+</section>
+
+<%- include('../partials/footer') %>
