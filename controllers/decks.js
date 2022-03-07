@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 const findCard = 'cards?name='
 // let searchTerm
 // let apiUrl = `https://api.magicthegathering.io/v1/${findCard}${searchTerm}`
-let picUrl
+let cardObjs = []
 
 function index(req, res) {
   Deck.find({})
@@ -21,29 +21,52 @@ function index(req, res) {
 }
 
 function newDeck(req, res) {
-  if(res.req.query && res.req.query.search != '') {
+  console.log('----------------------------------------')
 
-    console.log('----------------------------------------')
-    let searchTerm = res.req.query.search
+  if(res.req.query && res.req.query.searchCard != '') { 
+    console.log("::: QUERY ::: ", res.req.query.searchCard)
+    let searchTerm = res.req.query.searchCard
     let apiUrl = `https://api.magicthegathering.io/v1/${findCard}${searchTerm}`
-    console.log("::: QUERY ::: ", res.req.query.search)
-    console.log(apiUrl)
+    console.log('::: apiUrl :::', apiUrl)
     search(apiUrl)
-    console.log('::: picUrl :::', picUrl)
+    cardObjs = []
   }
-
+  
   res.render('decks/new', {
     title: 'New Deck',
-    pic: picUrl
+    cardObjs
   })
-  console.log('2')
 }
 
 function search(apiUrl) {
   fetch(apiUrl)
   .then(response => response.json())
-  .then(data => picUrl = data.cards[0].imageUrl)
+  // .then(data => picUrl = data.cards[0].imageUrl)
+  .then(data => {
+    data.cards.forEach(card => {
+      let cardObj = {}
+
+
+
+      // let addCard = true
+      // cardObjs.forEach(crdObj => {
+      //   console.log(card.name, 'vs' ,crdObj.name)
+      //   if(card.nam === crdObj.name) addCard = false
+      // })
+
+
+      // if(!cardObjs.includes(card.name)) {
+        // if(addCard) {
+        cardObj.name = card.name
+        cardObj.imageUrl = card.imageUrl
+        cardObj.multid = card.multiverseid
+        cardObjs.push(cardObj)
+      // }
+    })
+  })
   .catch(error => console.log('::: SEARCH ERROR :::', error))
+
+  console.log('::: CARD OBJ :::', cardObjs)
 }
 
 export {

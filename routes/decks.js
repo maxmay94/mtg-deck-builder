@@ -13,7 +13,7 @@ router.get('/new', decksCtrl.new)
 
 ////////////////////////
 // GET - localhost:3000/decks/search
-router.get('/new/search', decksCtrl.search)
+// router.get('/new/search', decksCtrl.search)
 ////////////////////////
 
 export {

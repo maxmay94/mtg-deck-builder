@@ -5,19 +5,19 @@
   <h1><%= title %> </h1>
   <form action="/decks/new" method="GET">
     <label>Search: <br>
-      <input type="text" name="search">
+      <input type="text" name="searchCard">
       <button type="submit">Search</button>
-      
     </label>
   </form> 
-  
-  <img src="<%= pic %>" alt="card image">
+  <div>
 
-    <!-- <div>
-      <section>
-        <img src="<%#= pic %> " alt="">
-      </section>
-    </div> -->
+  <% cardObjs.forEach(card => { %>
+    <% if(card.imageUrl) { %>
+        <img src="<%= card.imageUrl %>" alt="card image" style="height:250px">
+    <% } %>
+  <% }) %>
+
+  </div>
 </section>
 
 <%- include('../partials/footer') %>
