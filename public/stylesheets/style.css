@@ -72,8 +72,10 @@ img:hover {
 
 .search-box {
   display: flex;
+  /* flex-direction: column; */
   flex-direction: row;
   align-items: center;
+  /* justify-content: center; */
 
   overflow-x: scroll; 
   height:350px;

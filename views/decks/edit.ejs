@@ -1,42 +1,50 @@
 <%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
+  <%- include('../partials/nav') %>
 
-<main>
-  <h1><%= title %> </h1>
-  <h2>Click a Card to add it to your current deck</h2>
-  <form action="/decks/<%= deck._id %>/edit" method="GET">
-  <!-- <form action="/decks/edit" method="GET"> -->
-    <label>Search by Card... <br>
-      <select name="searchType">
-        <option value="name" selected>Name</option>
-        <option value="type">Type</option>
-        <option value="cmc">CMC</option>
-        <option value="setName">Set Name</option>
-      </select>
-      <input type="text" name="searchCard" autocomplete="off">
-      <button type="submit">Search</button>
-    </label>
-  </form> 
-
-  <h2>Search results: </h2>
-  <div class="search-box">
-  <% cardObjs.forEach(card => { %>
-    <% if(card.imageUrl) { %>
-      <form class="search-form" action="/decks/<%= deck.id %>?_method=PUT" method="POST" style="display:inline;">
-        <button type="submit">
-          <label name="<%= card.multiverseid %>">
-          <img src="<%= card.imageUrl %>" alt="<%= card.name %> ">
-          </label>
-        </button>
+    <main>
+      <h1>
+        <%= title %>
+      </h1>
+      <h2>Click a Card to add it to your current deck</h2>
+      <form action="/decks/<%= deck._id %>/edit" method="GET">
+        <!-- <form action="/decks/edit" method="GET"> -->
+        <label>Search Cards By... <br>
+          <select name="searchType">
+            <option value="name" selected>Name</option>
+            <option value="type">Type</option>
+            <option value="cmc">CMC</option>
+            <option value="setName">Set Name</option>
+            <option value="rarity">Rarity</option>
+            <option value="text">Text</option>
+          </select>
+          <input type="text" name="searchCard" autocomplete="off">
+          <button type="submit">Search</button>
+        </label>
       </form>
-    <% } %>
-  <% }) %>
-  </div>
-       
-  <h2>Current Deck: </h2>
-  <div class="deck-display">
+        
+      <h2>Search results: </h2>
+      <div class="search-box">
+        <% cardObjs.forEach(card=> { %>
+          <% if(card.imageUrl) { %>
+            <form class="search-form" 
+                  action="/decks/<%= deck.id %>?_method=PUT" 
+                  method="POST" 
+                  style="display:inline;"
+            >
+              <label for="card-button">
+                <button id="card-button" type="submit" name="multiverseid" value="<%= card.multiverseid %>">
+                  <img src="<%= card.imageUrl %>" alt="<%= card.name %>">
+                </button>
+              </label>
+            </form>
+            <% } %>
+              <% }) %>
+      </div>
 
-  </div>
-</main>
+      <h2>Current Deck: </h2>
+      <div class="deck-display">
 
-<%- include('../partials/footer') %>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>

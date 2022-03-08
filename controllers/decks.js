@@ -38,10 +38,10 @@ function create(req, res){
 }
 
 function edit(req, res) {
+  cardObjs = []
   Deck.findById(req.params.id)
   .then(deck => {
     console.log('::: deck._id :::', deck._id)
-    cardObjs = []
 
     if(res.req.query && res.req.query.searchCard != '') { 
       let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${res.req.query.searchCard}`
@@ -53,7 +53,7 @@ function edit(req, res) {
           let cardObj = {}
           cardObj.name = card.name
           cardObj.imageUrl = card.imageUrl
-          cardObj.multid = card.multiverseid
+          cardObj.multiverseid = card.multiverseid
           cardObjs.push(cardObj)
         })
       })
@@ -77,11 +77,18 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log("ADD CARD TO DECK")
-  console.log('------  req.body ------', req.body)
+  // console.log('------  res ------', res)
+  console.log('------  req ------', req.body)
   Deck.findById(req.params.id)
   .then(deck => {
-
+    deck.updateOne(req.body.multiverseid, {new:true})
+    .then(() => {
+      res.redirect(`/decks/${req.params.id}`)
+    })
+  })
+  .catch(err => {
+    console.log("the error:", err)
+    res.redirect(`/decks/${req.params.id}`)
   })
 }
 
