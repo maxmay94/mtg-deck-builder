@@ -5,6 +5,7 @@ let cardObjs = []
 
 function index(req, res) {
   Deck.find({})
+  .populate('owner')
   .then(decks => {
     res.render('decks/index', {
       decks,
@@ -25,9 +26,26 @@ function newDeck(req, res){
   })
 }
 
+function show(req, res) {
+  Deck.findById(req.params.id)
+  .populate('owner')
+  .then(deck => {
+    console.log('### DECK.OWNER ###',deck.owner)
+    res.render(`decks/show`, {
+      title: `${deck.name}`,
+      cardObjs,
+      deck
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/decks")
+  })
+}
+
 function create(req, res){
   console.log(req.body)
-  req.body.author = req.user.profile._id
+  req.body.owner = req.user.profile._id
   Deck.create(req.body)
   .then(deck => {
       res.redirect('/decks')
@@ -78,11 +96,9 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log("::: update function :::")
   Deck.findById(req.params.id)
   .then(deck => {
-    if(deck.author.equals(req.user.profile._id)) {
-      console.log("::: IM THE OWNER :::")
+    if(deck.owner.equals(req.user.profile._id)) {
       deck.deckList.push(req.body.multiverseid)
       deck.save()
       res.redirect(`/decks/${req.params.id}/edit`)
@@ -101,5 +117,6 @@ export {
   newDeck as new,
   edit,
   update,
-  create
+  create,
+  show
 }

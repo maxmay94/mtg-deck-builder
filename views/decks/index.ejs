@@ -2,21 +2,52 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1>My <%= title %> </h1>
+  <h1>
+    <%= user ? 'My' : 'All' %>
+      <%= title %>
+  </h1>
 
   <% if(decks) { %>
     <ul>
-      <% decks.forEach(deck => { %>
-        <a href="/decks/<%= deck._id %>/edit"><li><%= deck.name %> </li></a>
-      <% }) %>
-   </ul>
-  <% } else { %>
-    <h2>You don't have any decks yet dummy!</h2>
-  <% } %>
+      <% decks.forEach(deck=> { %>
 
-  <form action="/decks/new" method="GET">
-    <button type="submit">Make a Deck</button>
-  </form>
+        <% if (deck.owner.equals(user?.profile._id)) { %>
+
+          <a href="/decks/<%= deck._id %>/edit">
+            <li>
+              <%= deck.name %>
+            </li>
+          </a>
+
+          <% } %>
+            <% }) %>
+    </ul>
+
+    <h1>Other Decks</h1>
+    <ul>
+      <% decks.forEach(deck=> { %>
+
+        <% if (!deck.owner.equals(user?.profile._id)) { %>
+
+          <a href="/decks/<%= deck._id %>">
+            <li>
+              <%= deck.name %> 
+              --
+              <%= deck.owner.name %> 
+            </li>
+          </a>
+
+          <% } %>
+            <% }) %>
+    </ul>
+
+    <% } else { %>
+      <h2>You don't have any decks yet dummy!</h2>
+      <form action="/decks/new" method="GET">
+        <button type="submit">Make a Deck</button>
+      </form>
+    <% } %>
+
 
 </main>
 

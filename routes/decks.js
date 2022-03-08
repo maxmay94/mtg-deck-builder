@@ -10,6 +10,8 @@ const router = Router()
 router.get('/', isLoggedIn, decksCtrl.index)
 // GET - localhost:3000/decks/new
 router.get('/new', isLoggedIn, decksCtrl.new)
+// GET - localhost:3000/decks/:id
+router.get('/:id', decksCtrl.show)
 // GET - localhost:3000/decks/:id/edit
 router.get('/:id/edit', isLoggedIn, decksCtrl.edit)
 

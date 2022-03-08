@@ -1,14 +1,10 @@
 <%- include('../partials/html-head') %>
-  <%- include('../partials/nav') %>
+<%- include('../partials/nav') %>
 
     <main>
       <h1>
         <%= title %>
       </h1>
-      <h2>
-        A deck by: <%= deck.author.name %> 
-      </h2>
-
 
       <h2>Click a Card to add it to your current deck</h2>
       <form action="/decks/<%= deck._id %>/edit" method="GET">
@@ -54,4 +50,4 @@
       </div>
     </main>
 
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

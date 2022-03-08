@@ -1,0 +1,14 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= deck.name %></h1>
+  <h2>A Deck By : <%= deck.owner.name %></h2>
+  <div class="deck-display">
+    <% deck.deckList.forEach(card => { %>
+      <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
+    <% }) %>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

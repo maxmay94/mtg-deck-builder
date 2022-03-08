@@ -5,12 +5,20 @@
 <body>
   <nav>
     <% if (user) { %>
+      <img  class="profile-pic"
+            src="<%= user.profile.avatar %>"
+            alt="<%= user.profile.name %> avatar"
+      />
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
       <a href="/decks">
-        <button type="submit">My Decks</button>
+        <button type="submit">View Decks</button>
       </a>
+      <a href="/decks/new">
+        <button type="submit">Make a Deck</button>
+      </a>
+
     <% } else { %>
       <a href="/auth/google" class="siwg-link">
         <button type="submit" class="siwg">
