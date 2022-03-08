@@ -1,7 +1,7 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<section>
+<main>
   <h1><%= title %> </h1>
   <h2>Click a Card to add it to your current deck</h2>
   <form action="/decks/<%= deck._id %>/edit" method="GET">
@@ -16,9 +16,11 @@
   <div class="search-box">
   <% cardObjs.forEach(card => { %>
     <% if(card.imageUrl) { %>
-      <form action="/decks/<%= deck.id %>?_method=PUT" method="POST" style="display:inline;">
-        <button type="submit" style="border-radius: 10px;">
-          <img src="<%= card.imageUrl %>" alt="<%= card.name %> " style="height:250px">
+      <form class="search-form" action="/decks/<%= deck.id %>?_method=PUT" method="POST" style="display:inline;">
+        <button type="submit">
+          <label name="<%= card.multiverseid %>">
+          <img src="<%= card.imageUrl %>" alt="<%= card.name %> ">
+          </label>
         </button>
       </form>
     <% } %>
@@ -29,6 +31,6 @@
   <div>
 
   </div>
-</section>
+</main>
 
 <%- include('../partials/footer') %>

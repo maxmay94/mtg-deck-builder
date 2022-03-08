@@ -17,7 +17,9 @@ html {
 }
 
 body {
-  background-color: rgb(253, 177, 0);
+  /* background-color: rgb(253, 177, 0); */
+  background-color: #44663D;
+  color: #151514;
   /* Use a system font, if none are available use an available sans-sarif font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
@@ -25,7 +27,8 @@ body {
 }
 
 nav {
-  background-color: rgb(125, 193, 35);
+  /* background-color: rgb(125, 193, 35); */
+  background-color: #142108;
   font-size: 1.6rem;
   display: flex;
   justify-content: center;
@@ -41,3 +44,36 @@ main {
 h1 {
   font-size: 3.6rem;
 }
+
+img {
+  padding: 5px;
+  height:250px;
+  border-radius: 30px;
+}
+
+form > button {
+  background-color: rgb(42, 81, 50);
+  border: 1px solid rgb(54, 115, 67);
+  border-radius: 20px;
+  margin:2px
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.search-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  overflow-x: scroll; 
+  height:300px;
+  width: 95vw;
+  background-color: #32483E;
+  border: 2px solid black;
+}
+
+/* .search-form:first-child {
+  margin-left: 5000px;
+} */
