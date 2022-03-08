@@ -18,7 +18,7 @@
     <% if(card.imageUrl) { %>
       <form class="search-form" action="/decks/<%= deck.id %>?_method=PUT" method="POST" style="display:inline;">
         <button type="submit">
-          <label name="<%= card.multiverseid %>">
+          <label name="Name: <%= card.name %> multiverseID: <%= card.multiverseid %>">
           <img src="<%= card.imageUrl %>" alt="<%= card.name %> ">
           </label>
         </button>
@@ -28,7 +28,7 @@
   </div>
        
   <h2>Current Deck: </h2>
-  <div>
+  <div class="deck-display">
 
   </div>
 </main>

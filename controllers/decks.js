@@ -64,7 +64,7 @@ function edit(req, res) {
       })
       .then(() => {
         res.render(`decks/edit`, {
-          title: `Edit ${deck.name}`,
+          title: `${deck.name}`,
           cardObjs,
           deck
         })
@@ -83,7 +83,7 @@ function edit(req, res) {
 
 function update(req, res) {
   console.log("ADD CARD TO DECK")
-  console.log('------  req.body ------',req.body)
+  console.log('------  req.body ------', req.body)
   Deck.findById(req.params.id)
   .then(deck => {
 
