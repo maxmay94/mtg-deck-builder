@@ -68,7 +68,7 @@ function edit(req, res) {
 
     } else {
       res.render(`decks/edit`, {
-        title: 'Edit Deck',
+        title: `${deck.name}`,
         cardObjs,
         deck
       })
@@ -77,18 +77,15 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  // console.log('------  res ------', res)
-  console.log('------  req ------', req.body)
   Deck.findById(req.params.id)
   .then(deck => {
-    deck.updateOne(req.body.multiverseid, {new:true})
-    .then(() => {
-      res.redirect(`/decks/${req.params.id}`)
-    })
+    deck.deckList.push(req.body.multiverseid)
+    deck.save()
+    res.redirect(`/decks/${req.params.id}/edit`)
   })
   .catch(err => {
     console.log("the error:", err)
-    res.redirect(`/decks/${req.params.id}`)
+    res.redirect(`/decks/${req.params.id}/edit`)
   })
 }
 

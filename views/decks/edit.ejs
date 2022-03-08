@@ -43,7 +43,9 @@
 
       <h2>Current Deck: </h2>
       <div class="deck-display">
-
+        <% deck.deckList.forEach(card => { %>
+          <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
+        <% }) %>
       </div>
     </main>
 

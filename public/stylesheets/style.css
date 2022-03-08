@@ -70,7 +70,7 @@ img:hover {
   transform: scale(1.20);
 }
 
-.search-box {
+.search-box, .deck-display {
   display: flex;
   /* flex-direction: column; */
   flex-direction: row;
