@@ -2,7 +2,6 @@ import { Deck } from '../models/deck.js'
 import fetch from 'node-fetch'
 // import { redirect } from 'express/lib/response'
 
-const findCard = 'cards?name='
 let cardObjs = []
 
 function index(req, res) {
@@ -42,14 +41,13 @@ function create(req, res){
 function edit(req, res) {
   Deck.findById(req.params.id)
   .then(deck => {
-
     console.log('::: deck._id :::', deck._id)
-
     cardObjs = []
 
     if(res.req.query && res.req.query.searchCard != '') { 
       let searchTerm = res.req.query.searchCard
-      let apiUrl = `https://api.magicthegathering.io/v1/${findCard}${searchTerm}`
+      // let apiUrl = `https://api.magicthegathering.io/v1/${searchType}${searchTerm}`
+      let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${searchTerm}`
 
       fetch(apiUrl)
       .then(response => response.json())

@@ -6,8 +6,14 @@
   <h2>Click a Card to add it to your current deck</h2>
   <form action="/decks/<%= deck._id %>/edit" method="GET">
   <!-- <form action="/decks/edit" method="GET"> -->
-    <label>Search by Card Name: <br>
-      <input type="text" name="searchCard">
+    <label>Search by Card... <br>
+      <select name="searchType">
+        <option value="name" selected>Name</option>
+        <option value="type">Type</option>
+        <option value="cmc">CMC</option>
+        <option value="colors">Colors</option>
+      </select>
+      <input type="text" name="searchCard" autocomplete="off">
       <button type="submit">Search</button>
     </label>
   </form> 
@@ -18,7 +24,7 @@
     <% if(card.imageUrl) { %>
       <form class="search-form" action="/decks/<%= deck.id %>?_method=PUT" method="POST" style="display:inline;">
         <button type="submit">
-          <label name="Name: <%= card.name %> multiverseID: <%= card.multiverseid %>">
+          <label name="<%= card.multiverseid %>">
           <img src="<%= card.imageUrl %>" alt="<%= card.name %> ">
           </label>
         </button>
