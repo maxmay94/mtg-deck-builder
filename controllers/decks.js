@@ -1,6 +1,5 @@
 import { Deck } from '../models/deck.js'
 import fetch from 'node-fetch'
-// import { redirect } from 'express/lib/response'
 
 let cardObjs = []
 
@@ -45,9 +44,7 @@ function edit(req, res) {
     cardObjs = []
 
     if(res.req.query && res.req.query.searchCard != '') { 
-      let searchTerm = res.req.query.searchCard
-      // let apiUrl = `https://api.magicthegathering.io/v1/${searchType}${searchTerm}`
-      let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${searchTerm}`
+      let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${res.req.query.searchCard}`
 
       fetch(apiUrl)
       .then(response => response.json())
