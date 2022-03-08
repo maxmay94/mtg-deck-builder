@@ -27,6 +27,7 @@ function newDeck(req, res){
 
 function create(req, res){
   console.log(req.body)
+  req.body.author = req.user.profile._id
   Deck.create(req.body)
   .then(deck => {
       res.redirect('/decks')
@@ -77,11 +78,17 @@ function edit(req, res) {
 }
 
 function update(req, res) {
+  console.log("::: update function :::")
   Deck.findById(req.params.id)
   .then(deck => {
-    deck.deckList.push(req.body.multiverseid)
-    deck.save()
-    res.redirect(`/decks/${req.params.id}/edit`)
+    if(deck.author.equals(req.user.profile._id)) {
+      console.log("::: IM THE OWNER :::")
+      deck.deckList.push(req.body.multiverseid)
+      deck.save()
+      res.redirect(`/decks/${req.params.id}/edit`)
+    } else {
+      throw new Error(" --- NOT AUTHORIZED --- ")
+    }
   })
   .catch(err => {
     console.log("the error:", err)

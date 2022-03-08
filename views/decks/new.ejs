@@ -2,13 +2,15 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= title %> </h1>
-  <form action="/decks" method="POST">
-    <label>Name Your Deck: <br>
-      <input type="text" name="name" autocomplete="off">
-      <button type="submit">Create Deck</button>
-    </label>
-  </form> 
+  <h1><%= title %> </h1> 
+  <% if(user) { %>
+    <form action="/decks" method="POST">
+      <label>Name Your Deck: <br>
+        <input type="text" name="name" autocomplete="off">
+        <button type="submit">Create Deck</button>
+      </label>
+    </form> 
+  <% } %>
 </main>
 
 <%- include('../partials/footer') %>

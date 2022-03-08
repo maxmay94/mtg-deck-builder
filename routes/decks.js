@@ -7,17 +7,17 @@ const router = Router()
 //! localhost:3000/decks
 
 // GET - localhost:3000/decks
-router.get('/', decksCtrl.index)
+router.get('/', isLoggedIn, decksCtrl.index)
 // GET - localhost:3000/decks/new
-router.get('/new', decksCtrl.new)
+router.get('/new', isLoggedIn, decksCtrl.new)
 // GET - localhost:3000/decks/:id/edit
-router.get('/:id/edit', decksCtrl.edit)
+router.get('/:id/edit', isLoggedIn, decksCtrl.edit)
 
 // POST - localhostL3000/decks
-router.post('/', decksCtrl.create)
+router.post('/', isLoggedIn, decksCtrl.create)
 
 // PUT - localhost:3000/decks/:id
-router.put('/:id', decksCtrl.update)
+router.put('/:id', isLoggedIn, decksCtrl.update)
 
 
 export {
