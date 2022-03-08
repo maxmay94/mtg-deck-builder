@@ -11,7 +11,6 @@ function index(req, res) {
       decks,
       title: 'Decks'
     })
-    console.log(decks)
   })
   .catch(err => {
     console.log(err)
@@ -30,7 +29,6 @@ function show(req, res) {
   Deck.findById(req.params.id)
   .populate('owner')
   .then(deck => {
-    console.log('### DECK.OWNER ###',deck.owner)
     res.render(`decks/show`, {
       title: `${deck.name}`,
       cardObjs,
@@ -44,7 +42,6 @@ function show(req, res) {
 }
 
 function create(req, res){
-  console.log(req.body)
   req.body.owner = req.user.profile._id
   Deck.create(req.body)
   .then(deck => {
@@ -60,8 +57,6 @@ function edit(req, res) {
   cardObjs = []
   Deck.findById(req.params.id)
   .then(deck => {
-    console.log('::: deck._id :::', deck._id)
-
     if(res.req.query && res.req.query.searchCard != '') { 
       let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${res.req.query.searchCard}`
 

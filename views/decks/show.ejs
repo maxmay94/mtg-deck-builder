@@ -9,6 +9,27 @@
       <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
     <% }) %>
   </div>
+
+  <!-- <h2>Reviews:</h2>
+  <div>
+
+  </div> -->
+
+  <h2>Write a Review:</h2>
+  <div>
+    <form action="/decks/<%= deck._id %>" method="POST">
+      <label>Rating 1-5</label> <br>
+      <select name="rating">
+        <option value="1">🔥</option>
+        <option value="2">🔥🔥</option>
+        <option value="3" selected>🔥🔥🔥</option>
+        <option value="4">🔥🔥🔥🔥</option>
+        <option value="5">🔥🔥🔥🔥🔥</option>
+      </select> <br>
+      <textarea name="content" cols="70" rows="10"></textarea> <br>
+      <button type="submit">Submit Review</button>
+    </form>
+  </div>
 </main>
 
 <%- include('../partials/footer') %>
