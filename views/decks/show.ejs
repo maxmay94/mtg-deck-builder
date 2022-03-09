@@ -14,7 +14,16 @@
   <div class="review-box">
     <% deckReviews.forEach(review => { %>
       <% if (review.content != '') { %>
-        <p>(<%= review.rating %>/5) : <%= review.content %> </p>
+        <form action="/decks/<%= deck._id %>/deckReviews/<%= review._id %>?_method=DELETE"
+              method="POST"  
+        >
+          <p>(<%= review.rating %>/5) : 
+              <%= review.content %> 
+            <% if (review.owner.equals(user?.profile._id)) { %>
+              <button type="submit">x</button>
+            <% } %>
+          </p>
+        </form>
       <% } %>
     <% }) %>
   </div>

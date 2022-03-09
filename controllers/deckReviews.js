@@ -1,5 +1,6 @@
 import { DeckReview } from '../models/deckReview.js'
 import { Deck } from '../models/deck.js'
+// import { redirect } from 'express/lib/response'
 
 function index(req, res) {
   console.log('INDEX')
@@ -22,7 +23,26 @@ function submit(req, res) {
   })
 }
 
+function deleteReview(req, res) {
+  DeckReview.findById(req.params.reviewId)
+  .then(review => {
+    if(review.owner.equals(req.user.profile._id)) {
+      review.delete()
+      .then(() => {
+        res.redirect(`/decks/${req.params.deckId}`)
+      })
+    } else {
+      throw new Error ('NOT AUTHORIZED')
+    }
+  })
+  .catch(err => {
+    console.log("the error:", err)
+    res.redirect(`/decks/${req.params.deckId}`)
+  })
+}
+
 export {
   index,
-  submit
+  submit,
+  deleteReview as delete
 }

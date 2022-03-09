@@ -9,6 +9,8 @@ const router = Router()
 // router.post('/', isLoggedIn, deckReviewsCtrl.submit)
 router.post('/decks/:id/deckReviews', isLoggedIn, deckReviewsCtrl.submit)
 
+router.delete('/decks/:deckId/deckReviews/:reviewId', isLoggedIn, deckReviewsCtrl.delete)
+
 export {
   router
 }

@@ -8,7 +8,8 @@ const deckReviewSchema = new Schema({
     min: 1,
     max:5
   },
-  content: String
+  content: String,
+  owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true
 })

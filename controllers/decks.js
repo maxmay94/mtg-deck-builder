@@ -33,6 +33,7 @@ function show(req, res) {
   .populate('reviews')
   .then(deck => {
     DeckReview.find({_id: {$in: deck.reviews}})
+    .populate('owner')
     .then(deckReviews => {
       res.render(`decks/show`, {
         title: `${deck.name}`,
@@ -55,6 +56,7 @@ function create(req, res){
     Deck.create(req.body)
     .then(deck => {
       profile.decks.push(deck)
+      profile.save()
       res.redirect('/decks')
     })
     .catch(err => {
