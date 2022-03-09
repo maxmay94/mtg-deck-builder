@@ -66,7 +66,8 @@ app.use(passUserToView)
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/decks', decksRouter)
-app.use('/deckReviews', deckReviewsRouter)
+// app.use('/deckReviews', deckReviewsRouter)
+app.use('/', deckReviewsRouter)
 app.use('/profiles', profilesRouter)
 
 // catch 404 and forward to error handler

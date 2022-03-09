@@ -6,7 +6,8 @@ const router = Router()
 
 //! localhost:3000/deckReviews
 // POST - localhost:3000/decks/:id/deckReviews
-router.post('/', isLoggedIn, deckReviewsCtrl.submit)
+// router.post('/', isLoggedIn, deckReviewsCtrl.submit)
+router.post('/decks/:id/deckReviews', isLoggedIn, deckReviewsCtrl.submit)
 
 export {
   router

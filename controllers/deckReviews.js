@@ -5,14 +5,13 @@ function index(req, res) {
 }
 
 function submit(req, res) {
-  console.log("++++ SUBMIT ++++")
   req.body.owner = req.user.profile._id
   DeckReview.create(req.body)
   .then(review => {
-      res.redirect('/decks')
+      res.redirect(`/decks/${req.params.id}`)
   })
   .catch(err => {
-    console.log(err)
+    console.log('[][] ERROR -- deckReviews Controller [][]', err)
     res.redirect("/decks")
   })
 }
