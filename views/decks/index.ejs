@@ -10,11 +10,11 @@
     <ul>
       <% decks.forEach(deck=> { %>
         <% if (deck.owner.equals(user?.profile._id)) { %>
-          <a href="/decks/<%= deck._id %>/edit">
-            <li>
-              <%= deck.name %>
-            </li>
-          </a>
+            <a href="/decks/<%= deck._id %>/edit">
+              <li>
+                <%= deck.name %> 
+              </li>
+            </a>
           <% } %>
         <% }) %>
     </ul>

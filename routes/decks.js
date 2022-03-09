@@ -21,6 +21,8 @@ router.post('/', isLoggedIn, decksCtrl.create)
 // PUT - localhost:3000/decks/:id
 router.put('/:id', isLoggedIn, decksCtrl.update)
 
+// DELETE - localhost:3000/:id
+router.delete('/:id', isLoggedIn, decksCtrl.delete)
 
 export {
   router

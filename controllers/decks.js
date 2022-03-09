@@ -57,7 +57,7 @@ function create(req, res){
     .then(deck => {
       profile.decks.push(deck)
       profile.save()
-      res.redirect('/decks')
+      res.redirect(`/decks/${deck._id}/edit`)
     })
     .catch(err => {
       console.log(err)
@@ -70,7 +70,7 @@ function edit(req, res) {
   cardObjs = []
   Deck.findById(req.params.id)
   .then(deck => {
-    if(res.req.query && res.req.query.searchCard != '') { 
+    if(res.req.query && (res.req.query.searchCard != '' || res.req.query.searchCard)) { 
       let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${res.req.query.searchCard}`
 
       
@@ -125,11 +125,31 @@ function update(req, res) {
   })
 }
 
+function deleteDeck(req, res) {
+  console.log('+++ DELETE DECK +++')
+  Deck.findById(req.params.id)
+  .then(deck => {
+    if(deck.owner.equals(req.user.profile._id)) {
+      deck.delete()
+      .then(() => {
+        res.redirect(`/decks`)
+      })
+    } else {
+      throw new Error ('NOT AUTHORIZED')
+    }
+  })
+  .catch(err => {
+    console.log("the error:", err)
+    res.redirect(`/decks`)
+  })
+}
+
 export {
   index,
   newDeck as new,
   edit,
   update,
   create,
-  show
+  show,
+  deleteDeck as delete
 }
