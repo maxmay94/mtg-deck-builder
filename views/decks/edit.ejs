@@ -48,6 +48,18 @@
           <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
         <% }) %>
       </div>
+
+      <% if(deckReviews) { %>
+        <h2>Reviews:</h2>
+        <div class="review-box">
+          <% deckReviews.forEach(review => { %>
+            <% if (review.content != '') { %>
+              <p>(<%= review.rating %>/5) : <%= review.content %> </p>
+            <% } %>
+          <% }) %>
+        </div>
+      <% } %>
+
     </main>
 
 <%- include('../partials/footer') %>

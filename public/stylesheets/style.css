@@ -70,7 +70,7 @@ img:hover {
   transform: scale(1.20);
 }
 
-.search-box, .deck-display {
+.search-box, .deck-display{
   display: flex;
   /* flex-direction: column; */
   flex-direction: row;
@@ -82,6 +82,14 @@ img:hover {
   width: 95vw;
   background-color: #32483E;
   border: 0px ;
+}
+
+.review-box {
+  background-color: #151514;
+  color: #44663D;
+  width: 85vw;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .profile-pic {

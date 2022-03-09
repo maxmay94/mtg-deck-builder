@@ -10,10 +10,14 @@
     <% }) %>
   </div>
 
-  <!-- <h2>Reviews:</h2>
-  <div>
-
-  </div> -->
+  <h2>Reviews:</h2>
+  <div class="review-box">
+    <% deckReviews.forEach(review => { %>
+      <% if (review.content != '') { %>
+        <p>(<%= review.rating %>/5) : <%= review.content %> </p>
+      <% } %>
+    <% }) %>
+  </div>
 
   <h2>Write a Review:</h2>
   <div>

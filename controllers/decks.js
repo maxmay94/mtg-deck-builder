@@ -1,4 +1,6 @@
 import { Deck } from '../models/deck.js'
+import { DeckReview } from '../models/deckReview.js'
+import { Profile } from "../models/profile.js"
 import fetch from 'node-fetch'
 
 let cardObjs = []
@@ -28,28 +30,37 @@ function newDeck(req, res){
 function show(req, res) {
   Deck.findById(req.params.id)
   .populate('owner')
+  .populate('reviews')
   .then(deck => {
-    res.render(`decks/show`, {
-      title: `${deck.name}`,
-      cardObjs,
-      deck
+    DeckReview.find({_id: {$in: deck.reviews}})
+    .then(deckReviews => {
+      res.render(`decks/show`, {
+        title: `${deck.name}`,
+        cardObjs,
+        deck,
+        deckReviews
+      })
     })
   })
   .catch(err => {
-    console.log(err)
+    console.log('+++ decks controller show function +++',err)
     res.redirect("/decks")
   })
 }
 
 function create(req, res){
   req.body.owner = req.user.profile._id
-  Deck.create(req.body)
-  .then(deck => {
+  Profile.findById(req.user.profile._id)
+  .then(profile => {
+    Deck.create(req.body)
+    .then(deck => {
+      profile.decks.push(deck)
       res.redirect('/decks')
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect("/decks")
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect("/decks")
+    })
   })
 }
 
@@ -60,6 +71,7 @@ function edit(req, res) {
     if(res.req.query && res.req.query.searchCard != '') { 
       let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${res.req.query.searchCard}`
 
+      
       fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
@@ -72,10 +84,14 @@ function edit(req, res) {
         })
       })
       .then(() => {
-        res.render(`decks/edit`, {
-          title: `${deck.name}`,
-          cardObjs,
-          deck
+        DeckReview.find({_id: {$in: deck.reviews}})
+        .then(deckReviews => {
+          res.render(`decks/edit`, {
+            title: `${deck.name}`,
+            cardObjs,
+            deck,
+            deckReviews
+          })
         })
       })
       .catch(error => console.log('::: ERROR :::', error))
