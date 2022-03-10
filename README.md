@@ -1,6 +1,6 @@
-# MTG Deck Builder
+# MTG Deck Builder 
 
-MTG Deck Builder is a tool to help Magic The Gathering players build a deck and get feedback from other users!
+MTG Deck Builder is a tool to help Magic The Gathering players build decks and give/get feedback to/from other users!
 
 ## Getting Started 🪄
 [Try MTG Deck Builder Here!](https://deck-maker-mtg.herokuapp.com/) <br>
@@ -22,7 +22,7 @@ MTG Deck Builder is a tool to help Magic The Gathering players build a deck and 
 - If you decide later that you'd like to remove a card, click on that card in your current deck
 - You can delete your deck by pressing the 'Delete This Deck' button
 
-### View Decks and Leaving Reviews  🔮
+### Viewing Decks and Writing Reviews  🔮
 - Click 'View Decks' in the nav bar to view all decks
 - Click on any deck to view it
   - If it's a deck you own, you'll be able to edit your deck from there
@@ -32,7 +32,8 @@ MTG Deck Builder is a tool to help Magic The Gathering players build a deck and 
 
 ## Screenshots 🌠
 
-Coming Soon!
+<img src ="https://imgur.com/JdXYVqL.png" alt="view decks screen" width="400"/>
+<img src ="https://imgur.com/AWRSPRl.png" alt="edit deck screen" width="400"/>
 
 ## Technologies Used  💻
 
