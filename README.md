@@ -3,7 +3,8 @@
 MTG Deck Builder is a tool to help Magic The Gathering players build a deck and get feedback from other users!
 
 ## Getting Started 🪄
-[Try MTG Deck Builder Here!](https://deck-maker-mtg.herokuapp.com/)
+[Try MTG Deck Builder Here!](https://deck-maker-mtg.herokuapp.com/) <br>
+[Planning Materials](https://trello.com/b/d47BCnHw/mtg-deck-builder)
 
 ### Located in the Nav Bar  🧭
 * Logout : logout of your account
@@ -43,6 +44,10 @@ Coming Soon!
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
+![Google](https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
 ## Next Steps : 🧊🧊🧊<em>**THE ICEBOX**</em>🧊🧊🧊
 
