@@ -70,7 +70,7 @@ function edit(req, res) {
   cardObjs = []
   Deck.findById(req.params.id)
   .then(deck => {
-    if(res.req.query && (res.req.query.searchCard != '' || res.req.query.searchCard)) { 
+    if(res.req.query && (res.req.query.searchCard != '' || !res.req.query.searchCard)) { 
       let apiUrl = `https://api.magicthegathering.io/v1/cards?${res.req.query.searchType}=${res.req.query.searchCard}`
 
       
