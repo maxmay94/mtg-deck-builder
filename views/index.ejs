@@ -2,7 +2,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1>what up, <%= user ? user.profile.name + '?' : "playa?" %></h1>
   <h2>This is where the magic happens</h2>
   <% if (user?.profile.avatar) { %>
     <div class="container">
@@ -17,8 +17,6 @@
       </a>
     </div>
   <% } %>
-
-
 </main>
 
 <%- include('./partials/footer') %>

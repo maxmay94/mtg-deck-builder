@@ -95,6 +95,10 @@ button {
   margin:2px
 }
 
+textarea {
+  width: 85vw;
+}
+
 .butt:hover {
   color: #32483E;
   background-color: var(--font-color);
