@@ -145,12 +145,23 @@ function deleteDeck(req, res) {
 }
 
 function removeCard(req, res) {
-  console.log('REMOVE CARD')
-  console.log(res.req.params.cardId)
-  console.log(res.req.params.deckId)
+  let num = 0
+  let del = false
   Deck.findById(res.req.params.deckId)
   .then(deck => {
-
+    deck.deckList.forEach(card => {
+      if(card === parseInt(res.req.params.cardId) && !del) {
+         deck.deckList.splice(num,1)
+         del = true
+      }
+      num++
+    })
+    deck.save()
+    res.redirect(`/decks/${req.params.deckId}/edit`)
+  })
+  .catch(err => {
+    console.log("the error:", err)
+    res.redirect(`/decks/${req.params.deckId}/edit`)
   })
 }
 
