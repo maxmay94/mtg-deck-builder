@@ -144,6 +144,16 @@ function deleteDeck(req, res) {
   })
 }
 
+function removeCard(req, res) {
+  console.log('REMOVE CARD')
+  console.log(res.req.params.cardId)
+  console.log(res.req.params.deckId)
+  Deck.findById(res.req.params.deckId)
+  .then(deck => {
+
+  })
+}
+
 export {
   index,
   newDeck as new,
@@ -151,5 +161,6 @@ export {
   update,
   create,
   show,
-  deleteDeck as delete
+  deleteDeck as delete,
+  removeCard
 }

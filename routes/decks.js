@@ -21,8 +21,10 @@ router.post('/', isLoggedIn, decksCtrl.create)
 // PUT - localhost:3000/decks/:id
 router.put('/:id', isLoggedIn, decksCtrl.update)
 
-// DELETE - localhost:3000/:id
+// DELETE - localhost:3000/decks/:id
 router.delete('/:id', isLoggedIn, decksCtrl.delete)
+// DELETE - localhost:3000/decks/:deckId/cards/:cardId
+router.delete('/:deckId/cards/:cardId', isLoggedIn, decksCtrl.removeCard)
 
 export {
   router

@@ -1,6 +1,5 @@
 import { DeckReview } from '../models/deckReview.js'
 import { Deck } from '../models/deck.js'
-// import { redirect } from 'express/lib/response'
 
 function index(req, res) {
   console.log('INDEX')

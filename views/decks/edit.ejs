@@ -52,7 +52,15 @@
       <h2>Current Deck: Click a card to remove it</h2>
       <div class="deck-display">
         <% deck.deckList.forEach(card => { %>
-          <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
+          <form action="/decks/<%= deck._id %>/cards/<%= card %>?_method=DELETE"
+                method="POST"
+          >
+            <label for="card-remove-button">
+              <button id="card-remove-button" type="submit">
+                <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
+              </button>
+            </label>
+          </form>
         <% }) %>
       </div>
 
@@ -61,7 +69,7 @@
         <div class="review-box">
           <% deckReviews.forEach(review => { %>
             <% if (review.content != '') { %>
-              <p>(<%= review.rating %>/5) : <%= review.content %> </p>
+              <p>(<%= review.rating %>/5) : <%= review.content %></p>
             <% } %>
           <% }) %>
         </div>
