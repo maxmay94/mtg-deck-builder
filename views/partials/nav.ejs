@@ -10,18 +10,18 @@
             alt="<%= user.profile.name %> avatar"
       />
       <a href="/auth/logout">
-        <button type="submit">Logout</button>
+        <button class="butt" type="submit">Logout</button>
       </a>
       <a href="/decks">
-        <button type="submit">View Decks</button>
+        <button class="butt" type="submit">View Decks</button>
       </a>
       <a href="/decks/new">
-        <button type="submit">Make a Deck</button>
+        <button class="butt" type="submit">Make a Deck</button>
       </a>
 
     <% } else { %>
       <a href="/auth/google" class="siwg-link">
-        <button type="submit" class="siwg">
+        <button type="submit" class="siwg butt">
           <img id="siwg-image" alt="Sign in with Google" />
         </button>
       </a>

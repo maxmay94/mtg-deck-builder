@@ -6,7 +6,7 @@
   <h2>A Deck By : <%= deck.owner.name %></h2>
   <div class="deck-display">
     <% deck.deckList.forEach(card => { %>
-      <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
+      <img class="card-img" src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= card %> &type=card" alt="multiverseid: <%= card %>">
     <% }) %>
   </div>
 
@@ -20,7 +20,7 @@
           <p>(<%= review.rating %>/5) : 
               <%= review.content %> 
             <% if (review.owner.equals(user?.profile._id)) { %>
-              <button type="submit">x</button>
+              <button class="butt" type="submit">x</button>
             <% } %>
           </p>
         </form>
@@ -40,7 +40,7 @@
         <option value="5">🔥🔥🔥🔥🔥</option>
       </select> <br>
       <textarea name="content" cols="70" rows="10"></textarea> <br>
-      <button type="submit">Submit Review</button>
+      <button class="butt" type="submit">Submit Review</button>
     </form>
   </div>
 </main>

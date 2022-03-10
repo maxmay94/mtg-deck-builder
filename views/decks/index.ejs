@@ -2,9 +2,7 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1>
-    <%= title %>
-  </h1>
+  <h1>My <%= title %></h1>
 
   <% if(decks) { %>
     <ul>
@@ -12,6 +10,10 @@
         <% if (deck.owner.equals(user?.profile._id)) { %>
             <a href="/decks/<%= deck._id %>/edit">
               <li>
+                <img class="top-card" src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= deck.deckList[0] %> &type=card" alt="<%= deck.name %>  image">
+                
+                <br>
+
                 <%= deck.name %> 
               </li>
             </a>
@@ -25,9 +27,13 @@
         <% if (!deck.owner.equals(user?.profile._id)) { %>
           <a href="/decks/<%= deck._id %>">
             <li>
+              <img class="top-card" src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=<%= deck.deckList[0] %> &type=card" alt="<%= deck.name %>  image">
+
+              <br>
+
               <%= deck.name %> 
-              --
-              <%= deck.owner.name %> 
+              <br>
+              @<%= deck.owner.name %> 
             </li>
           </a>
           <% } %>
@@ -37,11 +43,9 @@
     <% } else { %>
       <h2>There are no decks yet!</h2>
       <form action="/decks/new" method="GET">
-        <button type="submit">Make a Deck</button>
+        <button class="butt" type="submit">Make a Deck</button>
       </form>
     <% } %>
-
-
 </main>
 
 <%- include('../partials/footer') %>

@@ -58,4 +58,4 @@ Coming Soon!
 
 ## CREDITS 🎬
 [MTG-API](https://docs.magicthegathering.io/)<br>
-[Favicon](https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/1/1a/C.svg/revision/latest/scale-to-width-down/1200?cb=20160121092204) 
+[Favicon](https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/1/1a/C.svg/revision/latest/scale-to-width-down/200?cb=20160121092204) 

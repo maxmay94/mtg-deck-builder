@@ -3,14 +3,22 @@
 
 <main>
   <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h2>This is where the magic happens</h2>
   <% if (user?.profile.avatar) { %>
-    <div>
-      <img class="profile-pic"
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
-      />
+    <div class="container">
+
+      <a href="/decks">
+        <img class="card-back" src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=40975541&type=card" alt="mtg-card-back">
+
+        <img class="profile-pic pic-on-card"
+          src="<%= user.profile.avatar %>"
+          alt="<%= user.profile.name %> avatar"
+        />
+      </a>
     </div>
   <% } %>
+
+
 </main>
 
 <%- include('./partials/footer') %>
