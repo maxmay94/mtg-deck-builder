@@ -10,23 +10,26 @@
     <% }) %>
   </div>
 
-  <h2>Reviews:</h2>
-  <div class="review-box">
-    <% deckReviews.forEach(review => { %>
-      <% if (review.content != '') { %>
-        <form action="/decks/<%= deck._id %>/deckReviews/<%= review._id %>?_method=DELETE"
-              method="POST"  
-        >
-          <p>(<%= review.rating %>/5) : 
-              <%= review.content %> 
-            <% if (review.owner.equals(user?.profile._id)) { %>
-              <button class="butt" type="submit">x</button>
-            <% } %>
-          </p>
-        </form>
-      <% } %>
-    <% }) %>
-  </div>
+  <% if(deck.reviews.length) { %>
+   
+    <h2>Reviews:</h2>
+    <div class="review-box">
+      <% deckReviews.forEach(review => { %>
+        <% if (review.content != '') { %>
+          <form action="/decks/<%= deck._id %>/deckReviews/<%= review._id %>?_method=DELETE"
+            method="POST"  
+            >
+              <p>(<%= review.rating %>/5) : 
+                <%= review.content %> 
+                <% if (review.owner.equals(user?.profile._id)) { %>
+                  <button class="butt" type="submit">x</button>
+                <% } %>
+              </p>
+            </form>
+          <% } %>
+        <% }) %>
+      </div>
+    <% } %>
 
   <h2>Write a Review:</h2>
   <div>
